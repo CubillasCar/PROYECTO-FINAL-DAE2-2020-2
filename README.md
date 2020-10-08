@@ -5,3 +5,6 @@ Integrantes:</br>
 
 Carlos Eduardo Cubillas Olano</br>
 Jordi Fernando Polo Varillas
+
+#Image
+![](img/bd.png)
