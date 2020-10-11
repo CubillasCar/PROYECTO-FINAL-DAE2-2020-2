@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Lista de Pacientes</title>
+</head>
+<body>
+
+<div class="container">
+    <h3>Lista de Pacientes</h3>
+
+    <div class="col-md-12">
+        <a th:href="@{/pacientes/add}" class="btn btn-primary" >Agregar</a>
+    </div>
+
+    <div th:switch="pacienteList">
+        <div th:case="*">
+
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Dni</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Email</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each=" paciente : ${pacienteList}">
+                    <th scope="row" th:text="${paciente.idPaciente}"></th>
+                    <td th:text="${paciente.nombres}"></td>
+                    <td th:text="${paciente.apellidos}"></td>
+                    <td th:text="${paciente.dni}"></td>
+                    <td th:text="${paciente.direccion}"></td>
+                    <td th:text="${paciente.telefono}"></td>
+                    <td th:text="${paciente.email}"></td>
+
+                    <td class="text-right">
+                        <div class="btn-group">
+
+                            <a th:href="@{/pacientes/edit/{idPaciente} (idPaciente = ${paciente.idPaciente}) }" class="btn btn-info btn-sm" >Editar</a>
+
+                            <a th:href="@{/paciente/delete/{idPaciente} (idPaciente = ${paciente.idPaciente}) }" class="btn btn-danger btn-sm" >Eliminar</a>
+
+                        </div>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

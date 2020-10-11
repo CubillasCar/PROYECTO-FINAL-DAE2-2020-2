@@ -1,14 +1,15 @@
 package pe.isil.service;
 
-import pe.isil.model.Paciente;
+
 
 import java.util.List;
 
-public interface IPacienteService {
+public interface IPacienteService<C,K> {
 
-    Paciente registrar (Paciente pac);
-    Paciente modificar (Paciente pac);
-    List<Paciente> listar();
-    Paciente listarPorId(Integer id);
-    void eliminar(Integer id);
+    void create(C c);
+    void update(C c);
+    void delete(C c);
+
+    C findById(K k);
+    List<C> findAll();
 }
