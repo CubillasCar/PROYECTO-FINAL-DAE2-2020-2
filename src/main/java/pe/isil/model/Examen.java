@@ -1,7 +1,14 @@
 package pe.isil.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
 @Table(name="tbl_examen")
 public class Examen {
@@ -17,55 +24,4 @@ public class Examen {
     @Column(name="descripcion", nullable=false, length=50)
     private String descripcion;
 
-    public Integer getIdExamen() {
-        return idExamen;
-    }
-
-    public void setIdExamen(Integer idExamen) {
-        this.idExamen = idExamen;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-//Generar equals idExamen
-// se hace esto para que sean usadas en la tabla ConsultaexamenPK
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((idExamen == null) ? 0 : idExamen.hashCode());
-        return result;
-    }
-
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Examen other = (Examen) obj;
-        if (idExamen == null) {
-            if (other.idExamen != null)
-                return false;
-        } else if (!idExamen.equals(other.idExamen))
-            return false;
-        return true;
-    }
 }

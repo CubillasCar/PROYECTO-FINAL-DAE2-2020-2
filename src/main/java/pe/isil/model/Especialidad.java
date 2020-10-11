@@ -1,7 +1,14 @@
 package pe.isil.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
 @Table(name="tbl_especialidad")
 public class Especialidad {
@@ -16,27 +23,4 @@ public class Especialidad {
     @Column(name = "descripcion", nullable = false, length = 50)
     private String descripcion;
 
-    public Integer getIdEspecialidad() {
-        return idEspecialidad;
-    }
-
-    public void setIdEspecialidad(Integer idEspecialidad) {
-        this.idEspecialidad = idEspecialidad;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 }
