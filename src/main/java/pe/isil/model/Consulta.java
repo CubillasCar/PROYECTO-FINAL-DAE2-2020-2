@@ -4,6 +4,7 @@ package pe.isil.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -23,6 +24,7 @@ import javax.persistence.Table;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Data
 @Entity
 @Table(name = "tbl_consulta")
@@ -32,8 +34,8 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idConsulta;
 
-    //Clase que representa llave foranea
-    //toda FK es ManyToOne
+    //------------------------------------------------------------------------------
+    //LLAVES FORANEAS: PACIENTE - MEDICO - ESPECIALIDAD
 
     @ManyToOne
     @JoinColumn(name = "id_paciente", nullable = false, foreignKey = @ForeignKey(name = "FK_consulta_paciente"))//Fk_Consulta_Paciente
@@ -44,7 +46,7 @@ public class Consulta {
     private Medico medico;
 
     @ManyToOne
-    @JoinColumn(name = "id_especialidad", nullable = false, foreignKey = @ForeignKey(name = "fk_consulta_especialidad"))
+    @JoinColumn(name = "id_especialidad", nullable = false, foreignKey = @ForeignKey(name = "FK_consulta_especialidad"))
     private Especialidad especialidad;
 
 
@@ -57,10 +59,12 @@ public class Consulta {
 
 
     //----------------------------------------------------------------------------
-    //Detalle Consulta
+    //Detalle Consulta  Tabla maestro detalle
+    //----------------------------------------------------------------------------
     //OneToMany a nivel logico
     //lo que le pase a la tabla padre tambien le afecta a la tabla detalle.
     //orphan sirve para eliminar algun elemento del detalle
+    //List o Set depende del programador
 
     @OneToMany (mappedBy = "consulta", cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<DetalleConsulta> detalleConsulta;

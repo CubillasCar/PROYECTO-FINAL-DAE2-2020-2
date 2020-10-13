@@ -21,8 +21,6 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPaciente;
 
-    //@Size para Strings
-
 
     @Size(min=3, message="Nombres debe tener minimo 3 caracteres")
     @Column(name = "nombres", nullable = false, length = 70)

@@ -6,23 +6,19 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Data
-//@Entity
-//@Table(name = "tbl_consulta_examen")
-//public class ConsultaExamen {
-//
-//
-// private ConsultaExamenPK id;
-//
-//    @ManyToOne
-//    @MapsId("project_id")
-//    @JoinColumn(name = "project_id")
-//    private Consulta consulta;
-//
-//    @Id
-//    private Examen examen;
-//
-//
-//  }
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@IdClass(ConsultaExamenPK.class)
+@Table(name = "tbl_consulta_examen")
+public class ConsultaExamen {
+
+    // [idConsulta(FK) idExamen(FK)] PK
+    @Id
+    private Consulta consulta;
+
+    @Id
+    private Examen examen;
+
+}

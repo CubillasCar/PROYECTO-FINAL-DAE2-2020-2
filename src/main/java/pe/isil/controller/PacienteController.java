@@ -63,36 +63,4 @@ public class PacienteController {
         return "redirect:/pacientes";
     }
 
-
-//    //LISTAR TODOS
-//    @GetMapping
-//    public List<Paciente> listar (){
-//        return service.listar();
-//    }
-//
-//    //LISTAR POR ID
-//    @GetMapping ("/{id}")	//el valor ingresa
-//    public Paciente listarPorId(@PathVariable("id")Integer id) {
-//        return service.listarPorId(id);
-//    }
-//
-//    //INSERTAR
-//    //RequestBody tranforma los json a objetos
-//    @PostMapping
-//    public Paciente registrar(@Valid @RequestBody Paciente paciente) {
-//        return service.registrar(paciente);
-//    }
-//
-//    //MODIFICAR
-//    //RequestBody tranforma los json a objetos
-//    @PutMapping
-//    public Paciente modificar(@Valid @RequestBody Paciente paciente) {
-//        return service.modificar(paciente);
-//    }
-//
-//    //ELIMINAR
-//    @DeleteMapping ("/{id}")
-//    public void eliminar(@PathVariable("id")Integer id) {
-//        service.eliminar(id);
-//    }
 }
