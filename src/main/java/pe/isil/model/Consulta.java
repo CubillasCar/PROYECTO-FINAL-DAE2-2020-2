@@ -57,6 +57,9 @@ public class Consulta {
     @Column(name = "fecha", nullable = false)
     private LocalDateTime fecha;
 
+    @OneToMany (mappedBy = "consulta", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    private List<DetalleConsulta> detalleConsulta;
+
 
     //----------------------------------------------------------------------------
     //Detalle Consulta  Tabla maestro detalle
@@ -65,11 +68,6 @@ public class Consulta {
     //lo que le pase a la tabla padre tambien le afecta a la tabla detalle.
     //orphan sirve para eliminar algun elemento del detalle
     //List o Set depende del programador
-
-    @OneToMany (mappedBy = "consulta", cascade = {CascadeType.ALL}, orphanRemoval = true)
-    private List<DetalleConsulta> detalleConsulta;
-
-
 
 
 

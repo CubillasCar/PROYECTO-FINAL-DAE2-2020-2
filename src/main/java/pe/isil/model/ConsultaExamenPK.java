@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class ConsultaExamenPK implements Serializable {
 
 
-
+//clases que se van a convertir en objetos
     @ManyToOne
     @JoinColumn(name = "id_consulta", nullable = false, foreignKey=@ForeignKey(name="FK_ConsultaExamen_consulta"))
     private Consulta consulta;
