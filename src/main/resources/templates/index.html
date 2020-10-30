@@ -13,15 +13,23 @@
 <body>
 <header>
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
+HOSPITAl
 
-            HOSPITAL
+                <img src="/static/img/LOGO-NERV.png" width="80"
+                     th:src="@{img/LOGO-NERV.png}"/>
+
         </a>
     </nav>
 </header>
 
-<h1>APP HOSPITAL</h1>
-<li><a th:href="@{/pacientes}" class="white-text">Pacientes</a></li>
 
+
+<ul class="list-group col-2">
+    <li class="list-group-item"><a th:href="@{/pacientes}">Pacientes</a></li>
+    <li class="list-group-item">Medico</li>
+    <li class="list-group-item">Especialidad</li>
+    <li class="list-group-item">Consulta</li>
+</ul>
 </body>
 </html>

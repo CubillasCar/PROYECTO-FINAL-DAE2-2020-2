@@ -26,16 +26,13 @@ public class PacienteService implements IPacienteService<Paciente, Integer> {
     }
 
     @Override
-    public void delete(Paciente paciente) {
-        iPacienteRepo.delete(paciente);
+    public void deleteById(Integer id) {
+        iPacienteRepo.deleteById(id);
     }
 
     @Override
-    public Paciente findById(Integer idPaciente) {
-        Paciente product = iPacienteRepo.findById(idPaciente)
-                .orElseGet(null);
-
-        return product;
+    public Paciente findById(Integer id) {
+        return iPacienteRepo.findById(id).orElse(null);
     }
 
     @Override

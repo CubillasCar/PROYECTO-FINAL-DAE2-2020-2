@@ -11,18 +11,34 @@
     <title>Lista de Pacientes</title>
 </head>
 <body>
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
 
-<div class="container">
-    <h3>Lista de Pacientes</h3>
+            <img src="/static/img/LOGO-NERV.png" width="80"
+                 th:src="@{img/LOGO-NERV.png}"/>
+        </a>
+    </nav>
+</header>
 
-    <div class="col-md-12">
-        <a th:href="@{/pacientes/add}" class="btn btn-primary" >Agregar</a>
+
+<div class="container-fluid">
+<div class="row">
+
+    <div class="card col-2" style="width: 10rem;">
+        <img src="/static/img/paciente.jpg" class="card-img-top"
+             th:src="@{img/paciente.jpg}"/>
+
     </div>
 
-    <div th:switch="pacienteList">
+
+
+
+    <div class="card col-10" th:switch="pacienteList">
+        <h3>Lista de Pacientes</h3>
         <div th:case="*">
 
-            <table class="table">
+            <table class="table ">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">id</th>
@@ -32,7 +48,7 @@
                     <th scope="col">Direccion</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Email</th>
-                    <th></th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -48,9 +64,9 @@
                     <td class="text-right">
                         <div class="btn-group">
 
-                            <a th:href="@{/pacientes/edit/{idPaciente} (idPaciente = ${paciente.idPaciente}) }" class="btn btn-info btn-sm" >Editar</a>
+                            <a th:href="@{/pacientes/edit/{id} (id=${paciente.idPaciente}) }" class="btn btn-info btn-sm" >Editar</a>
 
-                            <a th:href="@{/paciente/delete/{idPaciente} (idPaciente = ${paciente.idPaciente}) }" class="btn btn-danger btn-sm" >Eliminar</a>
+                            <a th:href="@{/pacientes/delete/{id} (id=${paciente.idPaciente}) }" class="btn btn-danger btn-sm" >Eliminar</a>
 
                         </div>
                     </td>
@@ -60,7 +76,10 @@
             </table>
         </div>
     </div>
-
+    <div class="col-md-12" align="right">
+        <a th:href="@{/pacientes/add}" class="btn btn-primary" >Agregar</a>
+    </div>
+</div>
 </div>
 
 </body>

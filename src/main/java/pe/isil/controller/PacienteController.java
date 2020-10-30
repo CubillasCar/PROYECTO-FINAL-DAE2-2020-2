@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pe.isil.model.Paciente;
 import pe.isil.service.IPacienteService;
+
+import javax.jws.WebParam;
 import java.util.List;
 
 @Controller
@@ -16,50 +18,36 @@ public class PacienteController {
 
 
     @GetMapping("/pacientes")
-    public String getPacienteList(Model model) {
+    public String pacienteList(Model model) {
 
         List<Paciente> pacienteList = iPacienteService.findAll();
         model.addAttribute("pacienteList", pacienteList);
 
-        return "paciente-List";
+        return "pacientes";
     }
 
     @GetMapping("/pacientes/add")
-    public String addPaciente(Model model) {
+    public String pacienteAdd(Model model) {
         model.addAttribute("paciente", new Paciente());
-        return "paciente-add";
+        return "pacienteAdd";
     }
 
     @PostMapping("/pacientes/save")
-    public String savePaciente(Model model, Paciente paciente) {
+    public String pacienteSave(Paciente paciente) {
         iPacienteService.create(paciente);
         return "redirect:/pacientes";
 
     }
 
     @GetMapping("pacientes/edit/{id}")
-    public String pacienteForEdit(@PathVariable Integer idPaciente, Model model){
-
-       Paciente paciente= (Paciente) iPacienteService.findById(idPaciente);
-
-        if(paciente!=null){
-            model.addAttribute("paciente",paciente);
-        }
-        return "paciente/edit";
+    public String pacienteEdit(Model model, @PathVariable Integer id) {
+        model.addAttribute("paciente", iPacienteService.findById(id));
+        return "pacienteAdd";
     }
 
-    @PostMapping("/pacientes/update")
-    public String updatePaciente(Model model, Paciente paciente){
-
-        iPacienteService.update(paciente);
-        return "redirect:/pacientes";
-    }
-
-    public String deletePaciente(@PathVariable Integer idPaciente){
-        Paciente paciente = (Paciente) iPacienteService.findById(idPaciente);
-        if (paciente!=null){
-            iPacienteService.delete(paciente);
-        }
+    @GetMapping("/pacientes/delete/{id}")
+    public String pacienteDelete(Model model, @PathVariable Integer id) {
+            iPacienteService.deleteById(id);
         return "redirect:/pacientes";
     }
 

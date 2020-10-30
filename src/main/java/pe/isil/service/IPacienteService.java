@@ -8,8 +8,8 @@ public interface IPacienteService<C,K> {
 
     void create(C c);
     void update(C c);
-    void delete(C c);
+    void deleteById(K k);
 
-    C findById(K k);
     List<C> findAll();
+    C findById(K k);
 }
