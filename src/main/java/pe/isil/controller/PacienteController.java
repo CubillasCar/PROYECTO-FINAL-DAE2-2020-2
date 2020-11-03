@@ -1,28 +1,25 @@
 package pe.isil.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pe.isil.model.Paciente;
-import pe.isil.service.IPacienteService;
-
-import javax.jws.WebParam;
-import java.util.List;
+import pe.isil.service.PacienteService;
 
 @Controller
 public class PacienteController {
 
-    @Autowired
-    IPacienteService iPacienteService;
+
+    private final PacienteService pacienteService;
+
+    public PacienteController(PacienteService pacienteService) {
+        this.pacienteService = pacienteService;
+    }
 
 
     @GetMapping("/pacientes")
     public String pacienteList(Model model) {
-
-        List<Paciente> pacienteList = iPacienteService.findAll();
-        model.addAttribute("pacienteList", pacienteList);
-
+        model.addAttribute("pacientes", pacienteService.findAll());
         return "pacientes";
     }
 
@@ -34,20 +31,20 @@ public class PacienteController {
 
     @PostMapping("/pacientes/save")
     public String pacienteSave(Paciente paciente) {
-        iPacienteService.create(paciente);
+        pacienteService.createOrUpdate(paciente);
         return "redirect:/pacientes";
 
     }
 
     @GetMapping("pacientes/edit/{id}")
     public String pacienteEdit(Model model, @PathVariable Integer id) {
-        model.addAttribute("paciente", iPacienteService.findById(id));
+        model.addAttribute("paciente", pacienteService.findById(id));
         return "pacienteAdd";
     }
 
     @GetMapping("/pacientes/delete/{id}")
     public String pacienteDelete(Model model, @PathVariable Integer id) {
-            iPacienteService.deleteById(id);
+        pacienteService.deleteById(id);
         return "redirect:/pacientes";
     }
 

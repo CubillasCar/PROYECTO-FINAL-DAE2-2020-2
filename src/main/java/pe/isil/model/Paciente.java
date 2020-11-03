@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
-import java.util.Collection;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -49,7 +49,7 @@ public class Paciente {
 
 
     @OneToMany(mappedBy = "paciente")
-    private Collection<Consulta> consulta;
+    private List<Consulta> consulta;
 
 
 }

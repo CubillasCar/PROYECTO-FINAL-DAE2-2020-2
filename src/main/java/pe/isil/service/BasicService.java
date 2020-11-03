@@ -1,13 +1,9 @@
 package pe.isil.service;
-
-
-
 import java.util.List;
 
-public interface IPacienteService<C,K> {
+public interface BasicService<C,K> {
 
-    void create(C c);
-    void update(C c);
+    void createOrUpdate(C c);
     void deleteById(K k);
 
     List<C> findAll();

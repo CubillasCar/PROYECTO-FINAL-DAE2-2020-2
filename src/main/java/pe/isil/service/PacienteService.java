@@ -8,21 +8,16 @@ import pe.isil.repository.IPacienteRepo;
 import java.util.List;
 
 @Service
-public class PacienteService implements IPacienteService<Paciente, Integer> {
+public class PacienteService implements BasicService<Paciente, Integer> {
 
     @Autowired
-    IPacienteRepo iPacienteRepo;
+    private IPacienteRepo iPacienteRepo;
 
 
     @Override
-    public void create(Paciente paciente) {
+    public void createOrUpdate(Paciente paciente) {
         iPacienteRepo.save(paciente);
 
-    }
-
-    @Override
-    public void update(Paciente paciente) {
-        iPacienteRepo.save(paciente);
     }
 
     @Override
@@ -31,12 +26,12 @@ public class PacienteService implements IPacienteService<Paciente, Integer> {
     }
 
     @Override
-    public Paciente findById(Integer id) {
-        return iPacienteRepo.findById(id).orElse(null);
+    public List<Paciente> findAll() {
+        return iPacienteRepo.findAll();
     }
 
     @Override
-    public List<Paciente> findAll() {
-        return iPacienteRepo.findAll();
+    public Paciente findById(Integer id) {
+        return iPacienteRepo.findById(id).orElse(null);
     }
 }
