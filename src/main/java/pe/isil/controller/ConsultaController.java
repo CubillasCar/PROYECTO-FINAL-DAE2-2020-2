@@ -16,19 +16,17 @@ public class ConsultaController {
 
     private final ConsultaService consultaService;
     private final PacienteService pacienteService;
-    private final MedicoService medicoService;
-    private final EspecialidadService especialidadService;
 
-    public ConsultaController(ConsultaService consultaService, PacienteService pacienteService, MedicoService medicoService, EspecialidadService especialidadService) {
+
+    public ConsultaController(ConsultaService consultaService, PacienteService pacienteService) {
         this.consultaService = consultaService;
         this.pacienteService = pacienteService;
-        this.medicoService = medicoService;
-        this.especialidadService = especialidadService;
+
     }
 
     @GetMapping("/consultas")
     public String consultaList(Model model){
-        model.addAttribute("consultas", pacienteService.findAll());
+        model.addAttribute("consultas", consultaService.findAll());
         return "consultas";
     }
 
@@ -36,8 +34,8 @@ public class ConsultaController {
     public String consultaAdd(Model model){
         model.addAttribute("consulta", new Consulta());
         model.addAttribute("pacientes", pacienteService.findAll());
-        model.addAttribute("medicos", medicoService.findAll());
-        model.addAttribute("especialidades", especialidadService.findAll());
+//        model.addAttribute("medicos", medicoService.findAll());
+//        model.addAttribute("especialidades", especialidadService.findAll());
 
         return "consultaAdd";
     }
@@ -53,10 +51,10 @@ public class ConsultaController {
     public String consultasEdit(Model model, @PathVariable Integer id){
         model.addAttribute("consulta", consultaService.findById(id));
         model.addAttribute("pacientes", pacienteService.findAll());
-        model.addAttribute("medicos", medicoService.findAll());
-        model.addAttribute("especialidades", especialidadService.findAll());
+//        model.addAttribute("medicos", medicoService.findAll());
+//        model.addAttribute("especialidades", especialidadService.findAll());
 
-        return "consultasAdd";
+        return "consultaAdd";
     }
 
     @GetMapping("/consultas/delete/{id}")

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Hospital</title>
+</head>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+
+            <img src="/static/img/LOGO-NERV.png" width="80"
+                 th:src="@{img/LOGO-NERV.png}"/>
+        </a>
+    </nav>
+</header>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <div class="card col-10" th:switch="medicoList">
+            <h3>Lista de Medicos</h3>
+
+            <div th:case="*">
+
+                <table class="table ">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Cmp</th>
+                        <th scope="col">Foto</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each=" medico : ${medicos}">
+                        <th scope="row" th:text="${medico.idMedico}"></th>
+                        <td th:text="${medico.nombres}"></td>
+                        <td th:text="${medico.apellidos}"></td>
+                        <td th:text="${medico.CMP}"></td>
+                        <td th:text="${medico.fotUrl}"></td>
+
+                        <td class="text-right">
+                            <div class="btn-group">
+
+                                <a th:href="@{/medicos/edit/{id} (id=${medico.idMedico}) }" class="btn btn-info btn-sm" >Editar</a>
+
+                                <a th:href="@{/medico/delete/{id} (id=${medico.idMedico}) }" class="btn btn-danger btn-sm" >Eliminar</a>
+
+                            </div>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-12" align="right">
+            <a th:href="@{/medicos/add}" class="btn btn-primary" >Agregar Medicos</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>

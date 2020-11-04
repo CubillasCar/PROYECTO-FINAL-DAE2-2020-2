@@ -14,12 +14,12 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "tbl_paciente")
+@Table(name = "paciente")
 public class Paciente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idPaciente;
+    private Integer id;
 
 
     @Size(min=3, message="Nombres debe tener minimo 3 caracteres")
@@ -49,7 +49,7 @@ public class Paciente {
 
 
     @OneToMany(mappedBy = "paciente")
-    private List<Consulta> consulta;
+    private List<Consulta> consultas;
 
 
 }

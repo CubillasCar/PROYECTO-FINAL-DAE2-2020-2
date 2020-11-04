@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idMedico;
+    private Integer id;
 
     @Column(name = "nombres", nullable = false, length = 70)
     private String nombres;
@@ -30,5 +31,7 @@ public class Medico {
     @Column(name = "fotourl", nullable = true)
     private String fotoUrl;
 
+//    @OneToMany(mappedBy = "medico")
+//    private List<Consulta> consultas;
 
 }

@@ -11,18 +11,19 @@
     <title>Lista de Pacientes</title>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">
 
-            <img src="/static/img/LOGO-NERV.png" width="80"
-                 th:src="@{img/LOGO-NERV.png}"/>
-        </a>
-    </nav>
-</header>
 
 
 <div class="container-fluid">
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">
+
+                <img src="/static/img/LOGO-NERV.png" width="80"
+                     th:src="@{img/LOGO-NERV.png}"/>
+            </a>
+        </nav>
+    </header>
 
 <div class="row">
 
@@ -49,12 +50,13 @@
                     <th scope="col">Direccion</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Email</th>
+                    <th scope="col"></th>
 
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each=" paciente : ${pacientes}">
-                    <th scope="row" th:text="${paciente.idPaciente}"></th>
+                    <th scope="row" th:text="${paciente.id}"></th>
                     <td th:text="${paciente.nombres}"></td>
                     <td th:text="${paciente.apellidos}"></td>
                     <td th:text="${paciente.dni}"></td>
@@ -65,9 +67,9 @@
                     <td class="text-right">
                         <div class="btn-group">
 
-                            <a th:href="@{/pacientes/edit/{id} (id=${paciente.idPaciente}) }" class="btn btn-info btn-sm" >Editar</a>
+                            <a th:href="@{/pacientes/edit/{id} (id=${paciente.id}) }" class="btn btn-info btn-sm" >Editar</a>
 
-                            <a th:href="@{/pacientes/delete/{id} (id=${paciente.idPaciente}) }" class="btn btn-danger btn-sm" >Eliminar</a>
+                            <a th:href="@{/pacientes/delete/{id} (id=${paciente.id}) }" class="btn btn-danger btn-sm" >Eliminar</a>
 
                         </div>
                     </td>

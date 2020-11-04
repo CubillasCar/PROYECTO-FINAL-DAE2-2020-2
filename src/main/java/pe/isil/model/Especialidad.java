@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,4 +24,6 @@ public class Especialidad {
     @Column(name = "descripcion", nullable = false, length = 50)
     private String descripcion;
 
+//    @OneToMany(mappedBy = "especialidad")
+//    private List<Consulta> consultas;
 }
