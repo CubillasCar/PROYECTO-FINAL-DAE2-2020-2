@@ -28,7 +28,7 @@
 
     <div class="row">
 
-        <div class="card col-10"  th:switch="consultas">
+        <div class="card "  th:switch="consultas">
             <h3>Lista de Consulta</h3>
             <div th:case="*">
 
@@ -38,25 +38,30 @@
                         <th scope="col">id</th>
                         <th scope="col">Consultorio</th>
                         <th scope="col">Fecha</th>
+                        <th scope="col">Numero del Paciente</th>
                         <th scope="col">Nombre del Paciente</th>
                         <th scope="col">Apellido del Paciente</th>
-<!--                        <th scope="col">Codigo Doctor</th>-->
-<!--                        <th scope="col">Apellido del doctor</th>-->
-<!--                        <th scope="col">Especialidad</th>-->
+                        <th scope="col">Codigo Doctor</th>
+                        <th scope="col">Nombre del doctor</th>
+                        <th scope="col">Apellido del doctor</th>
+                        <th scope="col">Especialidad</th>
+
 
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each=" consulta : ${consultas}">
                         <th scope="row" th:text="${consulta.id}"></th>
-                        <td th:text="${consulta.consultorio}"></td>
-                        <td th:text="${consulta.Fecha}"></td>
+                        <td th:text="${consulta.numConsultorio}"></td>
+                        <td th:text="${consulta.fecha}"></td>
                         <td th:text="${consulta.paciente.id}"></td>
-                        <td th:text="${consulta.paciente.nombre}"></td>
-                        <td th:text="${consulta.paciente.apellido}"></td>
-<!--                        <td th:text="${consulta.medico.id}"></td>-->
-<!--                        <td th:text="${consulta.medico.apellido}"></td>-->
-<!--                        <td th:text="${consulta.especialidad.nombre}"></td>-->
+                        <td th:text="${consulta.paciente.nombres}"></td>
+                        <td th:text="${consulta.paciente.apellidos}"></td>
+                        <td th:text="${consulta.medico.cmp}"></td>
+                        <td th:text="${consulta.medico.nombres}"></td>
+                        <td th:text="${consulta.medico.apellidos}"></td>
+                        <td th:text="${consulta.especialidad.nombre}"></td>
+
 
                         <td class="text-right">
                             <div class="btn-group">
@@ -72,11 +77,12 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-md-12" align="right">
+                <a th:href="@{/consultas/add}" class="btn btn-primary" >Agregar Paciente</a>
+            </div>
         </div>
 
-        <div class="col-md-12" align="right">
-            <a th:href="@{/consultas/add}" class="btn btn-primary" >Agregar Paciente</a>
-        </div>
+
     </div>
 </div>
 

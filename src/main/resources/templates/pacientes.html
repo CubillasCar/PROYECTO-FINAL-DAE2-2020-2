@@ -6,84 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <title>Lista de Pacientes</title>
 </head>
 <body>
 
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
 
+            <img src="/static/img/LOGO-NERV.png" width="80"
+                 th:src="@{img/LOGO-NERV.png}"/>
+        </a>
+    </nav>
+</header>
 
 <div class="container-fluid">
-    <header>
-        <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">
-
-                <img src="/static/img/LOGO-NERV.png" width="80"
-                     th:src="@{img/LOGO-NERV.png}"/>
-            </a>
-        </nav>
-    </header>
-
-<div class="row">
-
-    <div class="card col-2" style="width: 10rem;">
-        <img src="/static/img/paciente.jpg" class="card-img-top"
-             th:src="@{img/paciente.jpg}"/>
-
-    </div>
 
 
+    <div class="row">
+
+        <div class="card col-2" style="width: 10rem;">
+            <img src="/static/img/paciente.jpg" class="card-img-top"
+                 th:src="@{img/paciente.jpg}"/>
+
+        </div>
 
 
-    <div class="card col-10" th:switch="pacienteList">
-        <h3>Lista de Pacientes</h3>
-        <div th:case="*">
+        <div class="card col-10" th:switch="pacienteList">
+            <h3>Lista de Pacientes</h3>
+            <div th:case="*">
 
-            <table class="table ">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Dni</th>
-                    <th scope="col">Direccion</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Email</th>
-                    <th scope="col"></th>
+                <table class="table ">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Dni</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
 
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each=" paciente : ${pacientes}">
-                    <th scope="row" th:text="${paciente.id}"></th>
-                    <td th:text="${paciente.nombres}"></td>
-                    <td th:text="${paciente.apellidos}"></td>
-                    <td th:text="${paciente.dni}"></td>
-                    <td th:text="${paciente.direccion}"></td>
-                    <td th:text="${paciente.telefono}"></td>
-                    <td th:text="${paciente.email}"></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each=" paciente : ${pacientes}">
+                        <th scope="row" th:text="${paciente.id}"></th>
+                        <td th:text="${paciente.nombres}"></td>
+                        <td th:text="${paciente.apellidos}"></td>
+                        <td th:text="${paciente.dni}"></td>
+                        <td th:text="${paciente.direccion}"></td>
+                        <td th:text="${paciente.telefono}"></td>
+                        <td th:text="${paciente.email}"></td>
 
-                    <td class="text-right">
-                        <div class="btn-group">
+                        <td class="text-right">
+                            <div class="btn-group">
 
-                            <a th:href="@{/pacientes/edit/{id} (id=${paciente.id}) }" class="btn btn-info btn-sm" >Editar</a>
+                                <a th:href="@{/pacientes/edit/{id} (id=${paciente.id}) }" class="btn btn-info btn-sm">Editar</a>
 
-                            <a th:href="@{/pacientes/delete/{id} (id=${paciente.id}) }" class="btn btn-danger btn-sm" >Eliminar</a>
+                                <a th:href="@{/pacientes/delete/{id} (id=${paciente.id}) }"
+                                   class="btn btn-danger btn-sm">Eliminar</a>
 
-                        </div>
-                    </td>
+                            </div>
+                        </td>
 
-                </tr>
-                </tbody>
-            </table>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-12" align="right">
+            <a th:href="@{/pacientes/add}" class="btn btn-primary">Agregar Paciente</a>
         </div>
     </div>
-
-    <div class="col-md-12" align="right">
-        <a th:href="@{/pacientes/add}" class="btn btn-primary" >Agregar Paciente</a>
-    </div>
-</div>
 </div>
 
 </body>

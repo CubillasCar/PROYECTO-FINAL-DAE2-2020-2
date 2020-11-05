@@ -6,7 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,8 +35,9 @@ public class Consulta {
     @Column(name = "num_consultorio", length = 3, nullable = true)
     private String numConsultorio;
 
-    @Column(name = "fecha", nullable = false)
-    private LocalDateTime fecha;
+    @Column(name = "fecha", nullable = true)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fecha;
 
     //------------------------------------------------------------------------------
     //LLAVES FORANEAS: PACIENTE - MEDICO - ESPECIALIDAD
@@ -45,20 +49,20 @@ public class Consulta {
     @JoinColumn(name = "pacienteId", insertable = false, updatable = false)
     private Paciente paciente;
 
-//
-//    @Column(name="medicoId")
-//    private Integer medicoId;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "medicoId", insertable = false, updatable = false)
-//    private Medico medico;
-//
-//    @Column(name="especialidadId")
-//    private Integer especialidadId;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "especialidadId", insertable = false, updatable = false)
-//    private Especialidad especialidad;
+
+    @Column(name="medicoId")
+    private Integer medicoId;
+
+    @ManyToOne
+    @JoinColumn(name = "medicoId", insertable = false, updatable = false)
+    private Medico medico;
+
+    @Column(name="especialidadId")
+    private Integer especialidadId;
+
+    @ManyToOne
+    @JoinColumn(name = "especialidadId", insertable = false, updatable = false)
+    private Especialidad especialidad;
 
 
     //--------------------------------------------------------------------------

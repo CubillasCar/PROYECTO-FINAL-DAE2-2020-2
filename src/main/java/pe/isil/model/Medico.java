@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name="tbl_medico")
+@Table(name="medico")
 public class Medico {
 
     @Id
@@ -25,13 +25,13 @@ public class Medico {
     @Column(name = "apellidos", nullable = false, length = 70)
     private String apellidos;
 
-    @Column(name = "CMP", nullable = false, length = 12)
-    private String CMP;
+    @Column(name = "cmp", nullable = false, length = 12)
+    private String cmp;
 
     @Column(name = "fotourl", nullable = true)
     private String fotoUrl;
 
-//    @OneToMany(mappedBy = "medico")
-//    private List<Consulta> consultas;
+    @OneToMany(mappedBy = "medico")
+    private List<Consulta> consultas;
 
 }

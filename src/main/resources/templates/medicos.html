@@ -10,6 +10,7 @@
 
     <title>Hospital</title>
 </head>
+<header>
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="/">
 
@@ -18,11 +19,17 @@
         </a>
     </nav>
 </header>
+<body>
 
 <div class="container-fluid">
 
     <div class="row">
 
+        <div class="card col-2" style="width: 10rem;">
+            <img src="/static/img/dr2.jpg" class="card-img-top"
+                 th:src="@{img/dr2.jpg}"/>
+
+        </div>
 
         <div class="card col-10" th:switch="medicoList">
             <h3>Lista de Medicos</h3>
@@ -42,18 +49,18 @@
                     </thead>
                     <tbody>
                     <tr th:each=" medico : ${medicos}">
-                        <th scope="row" th:text="${medico.idMedico}"></th>
+                        <th scope="row" th:text="${medico.id}"></th>
                         <td th:text="${medico.nombres}"></td>
                         <td th:text="${medico.apellidos}"></td>
-                        <td th:text="${medico.CMP}"></td>
-                        <td th:text="${medico.fotUrl}"></td>
+                        <td th:text="${medico.cmp}"></td>
+                        <td th:text="${medico.fotoUrl}"></td>
 
                         <td class="text-right">
                             <div class="btn-group">
 
-                                <a th:href="@{/medicos/edit/{id} (id=${medico.idMedico}) }" class="btn btn-info btn-sm" >Editar</a>
+                                <a th:href="@{/medicos/edit/{id} (id=${medico.id}) }" class="btn btn-info btn-sm" >Editar</a>
 
-                                <a th:href="@{/medico/delete/{id} (id=${medico.idMedico}) }" class="btn btn-danger btn-sm" >Eliminar</a>
+                                <a th:href="@{/medicos/delete/{id} (id=${medico.id}) }" class="btn btn-danger btn-sm" >Eliminar</a>
 
                             </div>
                         </td>

@@ -16,12 +16,15 @@ public class ConsultaController {
 
     private final ConsultaService consultaService;
     private final PacienteService pacienteService;
+    private final MedicoService medicoService;
+    private final EspecialidadService especialidadService;
 
 
-    public ConsultaController(ConsultaService consultaService, PacienteService pacienteService) {
+    public ConsultaController(ConsultaService consultaService, PacienteService pacienteService, MedicoService medicoService, EspecialidadService especialidadService) {
         this.consultaService = consultaService;
         this.pacienteService = pacienteService;
-
+        this.medicoService = medicoService;
+        this.especialidadService = especialidadService;
     }
 
     @GetMapping("/consultas")
@@ -34,8 +37,8 @@ public class ConsultaController {
     public String consultaAdd(Model model){
         model.addAttribute("consulta", new Consulta());
         model.addAttribute("pacientes", pacienteService.findAll());
-//        model.addAttribute("medicos", medicoService.findAll());
-//        model.addAttribute("especialidades", especialidadService.findAll());
+        model.addAttribute("medicos", medicoService.findAll());
+        model.addAttribute("especialidades", especialidadService.findAll());
 
         return "consultaAdd";
     }
@@ -48,18 +51,18 @@ public class ConsultaController {
     }
 
     @GetMapping("/consultas/edi/{id}")
-    public String consultasEdit(Model model, @PathVariable Integer id){
+    public String consultaEdit(Model model, @PathVariable Integer id){
         model.addAttribute("consulta", consultaService.findById(id));
         model.addAttribute("pacientes", pacienteService.findAll());
-//        model.addAttribute("medicos", medicoService.findAll());
-//        model.addAttribute("especialidades", especialidadService.findAll());
+        model.addAttribute("medicos", medicoService.findAll());
+        model.addAttribute("especialidades", especialidadService.findAll());
 
         return "consultaAdd";
     }
 
     @GetMapping("/consultas/delete/{id}")
-    public String consultasDelete(Model model, @PathVariable Integer id){
+    public String consultaDelete(Model model, @PathVariable Integer id){
         consultaService.deleteById(id);
-        return "redirect:/consultas";
+        return "redirect:/consultasAdd";
     }
 }

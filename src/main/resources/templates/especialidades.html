@@ -11,6 +11,69 @@
     <title>Hospital</title>
 </head>
 <body>
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+            HOSPITAl
 
+            <img src="/static/img/LOGO-NERV.png" width="80"
+                 th:src="@{img/LOGO-NERV.png}"/>
+
+        </a>
+    </nav>
+</header>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+
+        <div class="card col-10" th:switch="especialdadList">
+            <h3>Lista de Especialidades</h3>
+
+
+
+            <div th:case="*">
+
+                <table class="table ">
+                    <thead class="thead-dark">
+                    <tr>
+
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each=" especialidad : ${especialidades}">
+                        <th scope="row" th:text="${especialidad.id}"></th>
+                        <td th:text="${especialidad.nombre}"></td>
+                        <td th:text="${especialidad.descripcion}"></td>
+
+                        <td class="text-right">
+                            <div class="btn-group">
+
+                                <a th:href="@{/especialidades/edit/{id} (id=${especialidad.id}) }" class="btn btn-info btn-sm" >Editar</a>
+
+                                <a th:href="@{/especialidades/delete/{id} (id=${especialidad.id}) }" class="btn btn-danger btn-sm" >Eliminar</a>
+
+                            </div>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-12" align="right">
+                <a th:href="@{/especialidades/add}" class="btn btn-primary" >Agregar Paciente</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
 </body>
 </html>

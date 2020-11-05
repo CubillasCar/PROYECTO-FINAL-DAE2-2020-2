@@ -11,12 +11,12 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name="tbl_especialidad")
+@Table(name="especialidad")
 public class Especialidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idEspecialidad;
+    private Integer id;
 
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
@@ -24,6 +24,6 @@ public class Especialidad {
     @Column(name = "descripcion", nullable = false, length = 50)
     private String descripcion;
 
-//    @OneToMany(mappedBy = "especialidad")
-//    private List<Consulta> consultas;
+    @OneToMany(mappedBy = "especialidad")
+    private List<Consulta> consultas;
 }
