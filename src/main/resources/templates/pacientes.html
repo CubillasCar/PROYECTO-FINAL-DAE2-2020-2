@@ -28,14 +28,14 @@
 
     <div class="row">
 
-        <div class="card col-2" style="width: 10rem;">
+        <div class="card col-3" style="width: 10rem;">
             <img src="/static/img/paciente.jpg" class="card-img-top"
                  th:src="@{img/paciente.jpg}"/>
 
         </div>
 
 
-        <div class="card col-10" th:switch="pacienteList">
+        <div class="card col-9" th:switch="pacienteList">
             <h3>Lista de Pacientes</h3>
             <div th:case="*">
 

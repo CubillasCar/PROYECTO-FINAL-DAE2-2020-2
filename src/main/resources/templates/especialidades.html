@@ -27,9 +27,13 @@
 
     <div class="row">
 
+        <div class="card col-4" style="width: 30rem;">
+            <img src="/static/img/especialidad.jpg" class="card-img-top"
+                 th:src="@{img/especialidad.jpg}"/>
 
+        </div>
 
-        <div class="card col-10" th:switch="especialdadList">
+        <div class="card col-8" th:switch="especialdadList">
             <h3>Lista de Especialidades</h3>
 
 
@@ -43,6 +47,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripcion</th>
+                        <th scope="col"></th>
 
 
                     </tr>
@@ -68,7 +73,7 @@
                 </table>
             </div>
             <div class="col-md-12" align="right">
-                <a th:href="@{/especialidades/add}" class="btn btn-primary" >Agregar Paciente</a>
+                <a th:href="@{/especialidades/add}" class="btn btn-primary" >Agregar Especialidad</a>
             </div>
         </div>
 
